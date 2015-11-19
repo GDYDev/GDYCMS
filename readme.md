@@ -22,6 +22,7 @@ AngularJS
 Twitter Bootstrap
 CaptchaMVC4
 TinyMCE
+
 ------------------------------------------------------------------------------------------------------
 
 Main features
@@ -31,13 +32,13 @@ Content management system is a software for creating, editing, publishing your w
 
 This CMS provide next principles: 
 
-1)	Administrator with login “Administrator” is a chief person and can not be deleted.
+1)	Administrator with login â€œAdministratorâ€ is a chief person and can not be deleted.
 
 2)	There is only one administrator at the site.
 
 3)	Administrator can create and remove users, reset any password.
 
-4)	“Administrator” as log in can not be changed, you can change only password.
+4)	â€œAdministratorâ€ as log in can not be changed, you can change only password.
 
 5)	User, as administrator, can modify any part of site, but can not change password of another user. 
 	User can change only own password.
@@ -59,6 +60,6 @@ This CMS provide next principles:
 
 11)	Past operation of link buffer is a transfer of hyperlink to your PC buffer. 
 	If you want add link inside third material, you should open link buffer, select necessary link and press copy, 
-	than in WYSIWYG select “Insert link” and with help of “CTRL-V” – paste it.
+	than in WYSIWYG select â€œInsert linkâ€ and with help of â€œCTRL-Vâ€ â€“ paste it.
 
 12) 	All link buffer links saved in cookies.
