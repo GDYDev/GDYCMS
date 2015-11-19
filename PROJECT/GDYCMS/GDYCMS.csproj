@@ -302,7 +302,19 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
-    <Content Include="Content\Upload\Pictures\Picture.png" />
+    <Content Include="Content\Upload\Pictures\AccountManagement.png" />
+    <Content Include="Content\Upload\Pictures\AdminPage.png" />
+    <Content Include="Content\Upload\Pictures\CentralPageEditorMenu.png" />
+    <Content Include="Content\Upload\Pictures\CopyToClipBoard.png" />
+    <Content Include="Content\Upload\Pictures\EditorExample.png" />
+    <Content Include="Content\Upload\Pictures\FileManager.png" />
+    <Content Include="Content\Upload\Pictures\MaterialEditor.png" />
+    <Content Include="Content\Upload\Pictures\MaterialEditorDown.png" />
+    <Content Include="Content\Upload\Pictures\PasteFromClipBoard.png" />
+    <Content Include="Content\Upload\Pictures\SignIn.png" />
+    <Content Include="Content\Upload\Pictures\SiteMap.png" />
+    <Content Include="Content\Upload\Pictures\Smile.png" />
+    <Content Include="Content\Upload\Pictures\ToLinkBuffer.png" />
     <Content Include="Content\Warnings\AccessClosed.html" />
     <Content Include="Content\Warnings\NotFound.html" />
     <Content Include="favicon.ico" />
@@ -486,7 +498,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Upload\DeleteFolder\" />
+    <Folder Include="Content\Upload\Empty Folder\" />
     <Folder Include="Images\" />
     <Folder Include="Scripts\TinyMCE\langs\" />
     <Folder Include="Scripts\TinyMCE\plugins\advlist\" />

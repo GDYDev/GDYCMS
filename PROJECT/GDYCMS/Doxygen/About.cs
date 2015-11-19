@@ -1,6 +1,7 @@
 ﻿/**
  * @mainpage  
  *
+ * 
  Introduction
 
 - GDYCMS is a small and simple Content Management System (CMS) which enables you to build corporate website. 
