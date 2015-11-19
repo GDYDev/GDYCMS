@@ -15,13 +15,13 @@ Features
 - AJAX based material editor and file manager.
 - Statistics module (at next releases)
 
-GDY CMS based on next integrated technologies:
-ASP.NET MVC4
-Entity Framework
-AngularJS
-Twitter Bootstrap
-CaptchaMVC4
-TinyMCE
+GDY CMS based on next integrated technologies(software):
+- ASP.NET MVC4
+- Entity Framework
+- AngularJS
+- Twitter Bootstrap
+- CaptchaMVC4
+- TinyMCE
 
 ------------------------------------------------------------------------------------------------------
 
