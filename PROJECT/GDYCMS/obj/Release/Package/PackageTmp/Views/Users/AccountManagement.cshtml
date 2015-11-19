@@ -1,0 +1,149 @@
+﻿@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; } 
+@model GDYCMS.Models.UsrsModel 
+@using GDYCMS.Models.Global
+
+
+<script src="/Scripts/Logic/Admin/Users.js"></script>
+
+@Styles.Render("~/Content/CMSStyles/Admin.css")
+<div ng-app="GDYApp" ng-controller="GDYController">
+    <div class="row CenteredDivWrapper">
+        <div class="col-md-4 col-xs-4 CenteredDiv" style="background-color:gray;">
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <select multiple="multiple" id="UserList" style="width:100%;height:400px;">
+                        @foreach (var item in Model.UserList) { 
+                            <option ng-click="SelectUser($event)" value="@item">@item</option>
+                        }
+                    </select>
+
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <button class="btn btn-success" style="float:left;"ng-click="ShowChangePasswordWindow();">CHANGE PASSWORD</button>
+                    <button class="btn btn-success" style="float:left;" ng-click="ShowNewUserCreationWindow();">ADD</button>                    
+                    <button class="btn btn-danger" style="float:right;" ng-click="ShowDeleteUserWindow();">DELETE</button>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <b>@Model.ErrorState</b>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- ==========================================MODAL WINDOWS FORM==================================-->
+
+@using (Html.BeginForm("AccountManagement","Users",FormMethod.Post)) {
+
+    <!-- COMMAND CONTAINER-->
+    @Html.HiddenFor(m => m.cmd, new { @id = "cmd", @Name = "cmd" });
+      
+
+    
+    <!-- =========================DELETE USER OPERATION====================================-->
+    <div id="DeleteUser" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Delete user</h4>
+          </div>
+          <div class="modal-body">
+              Are you shure that you want to delete this user ?
+          </div>                
+          <div class="modal-footer">
+              <input class="btn btn-danger" type="submit" value="Delete" style="float:left;" />
+              <button style="float:right;" type="button" class="btn btn-primary" data-dismiss="modal">CLOSE</button>
+          </div>
+        </div>
+      </div>
+    </div>        
+    
+<!---------------------------------------  Change USER PASSWORRD ----------------------------- -->      
+    <div id="ChangePassword" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Error</h4>
+          </div>
+          <div class="modal-body">
+
+            <fieldset>
+              <legend>Change password</legend>
+              <ol>
+                <li>
+                  @Html.LabelFor(m => m.NewPassword) @Html.TextBoxFor(m => m.NewPassword,new { @id = "NewPassword", @Name = "NewPassword" }) 
+                </li>
+                <li>
+                  @Html.LabelFor(m => m.RetypeNewPassword) @Html.PasswordFor(m => m.RetypeNewPassword,new { @id = "RetypeNewPassword", @Name = "RetypeNewPassword" }) 
+                </li>
+              </ol>
+              <input class="btn btn-success" type="submit" value="CHANGE" style="float:left;" />
+            </fieldset>
+          </div>                
+          <div class="modal-footer">
+              <button style="margin-left:0px;" type="button" class="btn btn-primary" data-dismiss="modal">CLOSE</button>
+          </div>
+        </div>
+      </div>
+    </div>    
+    
+    <!---------------------------------------  NEW USER CREATION ----------------------------- -->      
+    <div id="NewUser" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Error</h4>
+          </div>
+          <div class="modal-body">
+
+            <fieldset>
+              <legend>Register new user</legend>
+              @ViewBag.ErrorMessage
+              <ol>
+                <li>
+                  @Html.LabelFor(m => m.UserName) @Html.TextBoxFor(m => m.UserName,new { @id = "UserName", @Name = "UserName" }) 
+                </li>
+                <li>
+                  @Html.LabelFor(m => m.Password) @Html.PasswordFor(m => m.Password,new { @id = "Password", @Name = "Password" }) 
+                </li>
+                <li>
+                  @Html.LabelFor(m => m.RetypePassword) @Html.PasswordFor(m => m.RetypePassword,new { @id = "RetypePassword", @Name = "RetypePassword" }) 
+                </li>
+              </ol>
+              <input type="submit" value="Register" />
+            </fieldset>
+          </div>                
+          <div class="modal-footer">
+              <button style="margin-left:0px;" type="button" class="btn btn-primary" data-dismiss="modal">CLOSE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+}
+
+
+<!-- ===============================================NOT FORM ====================================-->
+<!-- Error modal-->
+<div id="ErrorModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Error</h4>
+      </div>
+      <div class="modal-body">
+        {{ErrorMessage}}
+      </div>                
+      <div class="modal-footer">
+          <button style="margin-left:0px;" type="button" class="btn btn-primary" data-dismiss="modal">CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</div>

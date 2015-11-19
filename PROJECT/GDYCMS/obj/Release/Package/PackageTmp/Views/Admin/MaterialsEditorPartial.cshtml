@@ -1,0 +1,238 @@
+﻿
+<div id="DeleteMaterial" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Delete material</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12 col-xs-12">
+            Are you want to delete this material ?
+        </div>
+      </div>                
+      <div class="modal-footer">
+          <button style="margin-left:0px;" type="button" class="btn btn-primary" data-dismiss="modal">CANCEL</button>
+          <button style="margin-left:0px;" type="button" class="btn btn-success" data-dismiss="modal" ng-click="TryToDeleteMaterial();">DELETE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========================================================================================================= -->
+<div id="RenameMaterial" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Rename material</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12 col-xs-12">
+            Enter new material name <input type="text" ng-model="CurrentEditor.NewMaterialName"/>
+        </div>
+      </div>                
+      <div class="modal-footer">
+          <button style="margin-left:0px;" type="button" class="btn btn-primary" data-dismiss="modal">CANCEL</button>
+          <button style="margin-left:0px;" type="button" class="btn btn-success" data-dismiss="modal" ng-click="TryToRenameMaterial();">RENAME</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ================================================================================================= -->
+<div id="AddNewMaterial" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create new material Group</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12 col-xs-12">
+            Enter new material name <input type="text" ng-model="CurrentEditor.NewMaterialName"/>
+        </div>
+      </div>                
+      <div class="modal-footer">
+          <button style="margin-left:0px;" type="button" class="btn btn-primary" data-dismiss="modal">CLOSE</button>
+          <button style="margin-left:0px;" type="button" class="btn btn-success" data-dismiss="modal" ng-click="TryToAddMaterial();">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================================================================================================== -->
+<div id="DeleteMaterialGroup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Rename material group</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12 col-xs-12">
+            Are you want to delete material group and all included materials
+        </div>
+      </div>                
+      <div class="modal-footer">
+          <button style="margin-left:0px;" type="button" class="btn btn-primary" data-dismiss="modal">CANCEL</button>
+          <button style="margin-left:0px;" type="button" class="btn btn-success" data-dismiss="modal" ng-click="TryToDeleteMaterialGroup();">DELETE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- ====================================================================================================== -->
+<div id="RenameMaterialGroup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Rename material group</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12 col-xs-12">
+            Enter new material group name <input type="text" ng-model="CurrentEditor.NewMaterialGroupName"/>
+        </div>
+      </div>                
+      <div class="modal-footer">
+          <button style="margin-left:0px;" type="button" class="btn btn-primary" data-dismiss="modal">CANCEL</button>
+          <button style="margin-left:0px;" type="button" class="btn btn-success" data-dismiss="modal" ng-click="TryToRenameMaterialGroup();">RENAME</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================================================================= -->
+<div id="AddNewMaterialGroup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create new material Group</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12 col-xs-12">
+            Enter new material group name <input type="text" ng-model="CurrentEditor.NewMaterialGroupName"/>
+        </div>
+      </div>                
+      <div class="modal-footer">
+          <button style="margin-left:0px;" type="button" class="btn btn-primary" data-dismiss="modal">CLOSE</button>
+          <button style="margin-left:0px;" type="button" class="btn btn-success" data-dismiss="modal" ng-click="TryToAddMaterialGroup();">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================================================================== -->
+<div id="ErrorMessage" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Error</h4>
+      </div>
+      <div class="modal-body">          
+          <img src="/Content/CMSStyles/AdminStyles/images/_SMILE_Crying.png" width="100" height="100" />
+        {{ErrorMessage}}
+      </div>                
+      <div class="modal-footer">
+          <button style="margin-left:0px;" type="button" class="btn btn-primary" data-dismiss="modal">CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ====================================================================================================== -->
+
+
+
+<div id="MaterialChangesSaved" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">OK</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12 col-xs-12">
+             <img src="/Content/CMSStyles/AdminStyles/images/_SMILE_Happy.png" width="100" height="100" /> Changes saved
+        </div>
+      </div>                
+      <div class="modal-footer">
+          <button style="margin-left:0px;" type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!------------------------------------------------------------------CLIPBOARD----------------------------------------------------->
+
+<div id="MaterialLinkToBuffer" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Rename material</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12 col-xs-12">
+            Enter link name <input type="text" ng-model="LinkName"/>
+        </div>
+      </div>                
+      <div class="modal-footer">
+          <button style="margin-left:0px;" type="button" class="btn btn-primary" data-dismiss="modal">CANCEL</button>
+          <button style="margin-left:0px;" type="button" class="btn btn-success" data-dismiss="modal" ng-click="TryToAddThisMaterialLinkToBuffer();">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div id="LinkBufferModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">        
+            <div class="col-md-12 col-xs-12">
+                
+                <select multiple="multiple" style="width:100%;height:100%;" ng-model="LinkBuffer.SelectedLink">
+                    <option ng-repeat="item in LinkBuffer.ObjectList" value="{{item.Address}}">{{item.LinkName}}</option> 
+                </select>
+                
+            </div>        
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-xs-12">{{LinkBufferModel.SelectedLink}}</div>
+        </div>
+      </div>
+<button id="CopyToClipBoardButtonID" style="margin-left:20px;" type="button" class="btn btn-success" ng-click="$('#LinkBufferModal').modal('lock');LinkBuffer.CopyToClipBoard();">COPY TO CLIPBOARD</button>
+        <button style="margin-left:50px;" type="button" class="btn btn-danger" ng-click="$('#LinkBufferModal').modal('lock');LinkBuffer.DeleteSelected();">REMOVE</button>
+        <button style="margin-left:0px;" type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,106 @@
+﻿@{ Layout = "~/Views/Shared/_AdminLayout.cshtml"; } 
+@model GDYCMS.Models.EditorModel 
+@using GDYCMS.Models.Global 
+@section CSS_CentralPageEditor{
+    <link rel="stylesheet" type="text/css" href="/Content/CMSStyles/AdminStyles/CentralPageEditor.css" /> 
+}
+
+<script src="/Scripts/Logic/Admin/CentralPageAdmin.js"></script>
+<div ng-app="GDYApp" ng-controller="GDYController">
+  <div class="row CMSAdminPreviewDelimeter"></div>
+  <div class="row">
+    @switch (Model.Container) { 
+        case (int)GlobalThings.ContainerTypes.UpperMenu:{
+                <div class="col-xs-12 col-md-12 UpperMenu">
+                  <div ng-bind-html="to_trusted(CurrentMaterialHTML)"></div>
+                </div>
+            break; 
+        } 
+        case (int)GlobalThings.ContainerTypes.LeftMenuUp: {
+                <div class="row CMSAdminCenteredPanelObject">
+                  <div class="col-xs-5 col-md-5"></div>
+                  <div class="col-xs-2 col-md-2 LeftMenuUp">
+                        <div ng-bind-html="to_trusted(CurrentMaterialHTML)"></div>
+                  </div>
+                  <div class="col-xs-7 col-md-7"></div>
+                </div>
+            break; 
+        }     
+        case (int)GlobalThings.ContainerTypes.LeftMenuDown: {
+                <div class="row CMSAdminCenteredPanelObject">
+                  <div class="col-xs-5 col-md-5"></div>
+                  <div class="col-xs-2 col-md-2 LeftMenuDown">
+                    <div ng-bind-html="to_trusted(CurrentMaterialHTML)"></div>
+                  </div>
+                  <div class="col-xs-7 col-md-7"></div>
+                </div>
+            break; 
+        } 
+    
+        case (int)GlobalThings.ContainerTypes.RightMenuUp: {
+                <div class="row CMSAdminCenteredPanelObject">
+                  <div class="col-xs-5 col-md-5"></div>
+                  <div class="col-xs-2 col-md-2 RightMenuUp">
+                    <div ng-bind-html="to_trusted(CurrentMaterialHTML)"></div>
+                  </div>
+                  <div class="col-xs-7 col-md-7"></div>
+                </div>
+            break; 
+        } 
+        case (int)GlobalThings.ContainerTypes.RightMenuDown: {
+                <div class="row CMSAdminCenteredPanelObject">
+                  <div class="col-xs-5 col-md-5"></div>
+                  <div class="col-xs-2 col-md-2 RightMenuUp">
+                    <div ng-bind-html="to_trusted(CurrentMaterialHTML)"></div>
+                  </div>
+                  <div class="col-xs-7 col-md-7"></div>
+                </div>
+            break; 
+        } 
+        case (int)GlobalThings.ContainerTypes.CentralContent: {
+                <div class="row CMSAdminCenteredPanelObject">
+                  <div class="col-xs-2 col-md-2"></div>
+                  <div class="col-xs-8 col-md-8 CentralContent">
+                    <div ng-bind-html="to_trusted(CurrentMaterialHTML)"></div>
+                  </div>
+                <div class="col-xs-2 col-md-2"></div>
+                </div>
+            break; 
+        }
+    
+        case (int)GlobalThings.ContainerTypes.Footer: {
+                <div class="row CMSAdminCenteredPanelObject">
+                  <div class="col-xs-12 col-md-12 Footer">
+                    <div ng-bind-html="to_trusted(CurrentMaterialHTML)"></div>
+                  </div>
+                </div>
+            break; 
+        } 
+    }
+  </div>
+  <div class="row CMSAdminPreviewDelimeter"></div>
+
+  <form action="/Admin/CentralPageEditor/@GlobalThings.MainPageEditorTarget[(int)Model.Container]" method="post">
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        @Html.HiddenFor(t=>t.Container)
+        <textarea name="HTML" id="HTML" ui-tinymce="tinymceOptions" ng-model="CurrentMaterialHTML">@Model.HTML</textarea>
+      </div>
+    </div>
+    <div class="row CMSAdminDownPanel">
+      <div class="col-xs-12 col-md-12">
+        <div class="LinkBufferButtonBlock">
+          <button class="btn btn-success" onclick="return false" ng-click="OpenLinkBuffer();">LINK BUFFER</button>
+        </div>
+        <div class="save-container">
+          <input id="SaveButton" class="btn btn-success" type="submit" value="Save" />
+          <label>
+            <input data-val="true" id="isPublished" name="isPublished" type="checkbox" value="true" /> IS Published
+          </label>
+        </div>
+        <input name="isPublished" type="hidden" value="false" />
+      </div>
+    </div>
+  </form>
+  @Html.Partial("LinkBufferPartial")
+</div>

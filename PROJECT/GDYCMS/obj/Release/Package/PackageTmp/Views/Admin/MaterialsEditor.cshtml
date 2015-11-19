@@ -1,0 +1,83 @@
+﻿@{ ViewBag.Title = "MaterialEditor"; Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+@model GDYCMS.Models.EditorModel 
+@using GDYCMS.Models.Global
+
+<link rel="stylesheet" type="text/css" href="/Content/CMSStyles/AdminStyles/MaterialsEditor.css" />
+<script src="~/Scripts/Logic/Admin/MaterialsEditor.js"></script>
+
+<div class="row" ng-app="GDYApp" ng-controller="GDYController">
+<form action="/Admin/MaterialEditor" method="post">
+
+
+
+  <div class="col-md-2 col-xs-2 Bordered">
+    <div class="row">
+      <div class="col-md-12 col-xs-12">CATEGORIES</div>
+      <div class="col-md-12 col-xs-12 MaterialSelector">
+          
+          <select multiple="multiple">
+                <option ng-repeat="item in CurrentEditor.MaterialGroupList" value={{item}} ng-click="LoadMaterialsForSelectedGroup(item)">{{item}}</option>
+          </select>
+
+
+      </div>
+      <div class="col-md-12 col-xs-12 LeftPanel">
+        <div class="row">
+            <button class="btn btn-success" ng-click="AddNewMaterialGroup();" onclick="return false">ADD NEW</button>
+        </div>
+        <div class="row">
+            <button class="btn btn-success" onclick="return false" ng-click="RenameMaterialGroup();">RENAME</button>
+        </div>
+        <div class="row">
+            <button class="btn btn-danger" onclick="return false" ng-click="DeleteMaterialGroup();">DELETE</button>
+        </div>               
+      </div>
+
+      <div class="col-md-12 col-xs-12">MATERIALS</div>
+      <div class="col-md-12 col-xs-12 MaterialSelector">
+            <select multiple="multiple">
+                <option ng-repeat="item in CurrentEditor.MaterialList" value={{item}} ng-click="LoadMaterial(item)">{{item}}</option>
+            </select>
+          
+
+      </div>
+      <div class="col-md-12 col-xs-12 LeftPanel">
+        <div class="row"><button class="btn btn-success" onclick="return false" ng-click="AddNewMaterial();">ADD NEW</button></div>
+        <div class="row"><button class="btn btn-success" onclick="return false" ng-click="RenameMaterial();">RENAME</button></div>
+        <div class="row"><button class="btn btn-danger" onclick="return false" ng-click="DeleteMaterial();">DELETE</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5 col-xs-5 Bordered">
+      <textarea name="HTML" id="HTML" ui-tinymce="tinymceOptions" ng-model="CurrentEditor.HTML"></textarea>      
+  </div>
+  <div class="col-md-5 col-xs-5 Bordered CentralContent">
+       <div ng-bind-html="to_trusted(CurrentEditor.HTML)"></div>
+  </div>
+  <div class="col-md-12 col-xs-12">
+      <div class="row">
+          <table class="table-bordered">
+              <tr>
+                  <td>
+                      <button id="SubmitID" class="btn btn-success" type="submit" onclick="return false;" ng-click="OpenAddLinkWindow();">TO BUFFER</button>
+                  </td>
+                  <td>
+                        <button style="margin-left:auto;" id="SubmitID" class="btn btn-success" type="submit" onclick="return false;" ng-click="OpenLinkBuffer();">LINK BUFFER</button>
+                  </td>
+                  <td>
+                      <div style="float:right;">
+                        Is published<input class="check-box" type="checkbox" ng-model="CurrentEditor.isPublished"/><button id="SubmitID" class="btn btn-success" type="submit" onclick="return false;" ng-click="UpdateMaterial();">UPDATE</button>
+                      </div>
+                  </td>
+              </tr>
+                      
+          </table>
+          <b>Last modification: </b>{{CurrentEditor.LastChange | date: 'yyyy-MM-dd HH:mm'}} <b>Current material link is: </b><a href="/Home/Index/{{CurrentEditor.SelectedMaterialID}}">/{{CurrentEditor.SelectedMaterialID}}</a> <b>Last modifier:</b> {{CurrentEditor.LastModifier}} <b>First Creator:</b>{{CurrentEditor.FirstCreator}}
+      </div>
+      
+  </div>
+</form>
+
+    @Html.Partial("MaterialsEditorPartial");
+
+</div>

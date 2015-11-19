@@ -1,0 +1,70 @@
+﻿.CMSAdminUpperHeader{
+    border-style: solid;
+    border-width: 1px;
+    height: 100px;
+    background-color: #269abc;
+}
+
+.CMSAdminUpperMenu{
+    border-style: solid;
+    border-width: 1px;
+    height: 50px;
+    background-color: #00BFFF;
+}
+
+.CMSAdminPreviewDelimeter {
+    height:50px;
+    background-color:black;
+}
+
+.CMSAdminDownPanel{
+    border-style: solid;
+    border-width: 1px;
+    height: 50px;
+    background-color: #3B9EBF;
+    text-align:center;
+}
+.CMSAdminCenteredPanelObject {
+    background-color:black;
+}
+
+ /*-------------------------Place of user name. Administrator for example----------------------------*/
+.CMSAccountNamePlace {
+    float:right;
+}
+/* Account management button or Change password button*/
+.CMSAccountButton {
+    float:right;
+}
+
+.CenteredDiv {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.CenteredDivWrapper {
+    margin-top:30px;
+    text-align: center;
+    vertical-align:middle;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

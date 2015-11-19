@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_GDYCMSModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DB_GDYCMSEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="CentralMaterials" EntityType="DB_GDYCMSModel.CentralMaterials" />
+    <EntitySet Name="MaterialGroups" EntityType="DB_GDYCMSModel.MaterialGroups" />
+    <EntitySet Name="Materials" EntityType="DB_GDYCMSModel.Materials" />
+    <EntitySet Name="UserProfile" EntityType="DB_GDYCMSModel.UserProfile" />
+    <EntitySet Name="webpages_Membership" EntityType="DB_GDYCMSModel.webpages_Membership" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="DB_GDYCMSModel.webpages_OAuthMembership" />
+    <EntitySet Name="webpages_Roles" EntityType="DB_GDYCMSModel.webpages_Roles" />
+    <AssociationSet Name="fk_MaterialGroup" Association="DB_GDYCMSModel.fk_MaterialGroup">
+      <End Role="MaterialGroups" EntitySet="MaterialGroups" />
+      <End Role="Materials" EntitySet="Materials" />
+    </AssociationSet>
+    <AssociationSet Name="fk_FirstCreator" Association="DB_GDYCMSModel.fk_FirstCreator">
+      <End Role="UserProfile" EntitySet="UserProfile" />
+      <End Role="Materials" EntitySet="Materials" />
+    </AssociationSet>
+    <AssociationSet Name="fk_LastModifier" Association="DB_GDYCMSModel.fk_LastModifier">
+      <End Role="UserProfile" EntitySet="UserProfile" />
+      <End Role="Materials" EntitySet="Materials" />
+    </AssociationSet>
+    <AssociationSet Name="webpages_UsersInRoles" Association="DB_GDYCMSModel.webpages_UsersInRoles">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="UserProfile" EntitySet="UserProfile" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CentralMaterials">
+    <Key>
+      <PropertyRef Name="ContainerID" />
+    </Key>
+    <Property Name="ContainerID" Type="Int32" Nullable="false" />
+    <Property Name="HTML" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="isHidden" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaterialGroups">
+    <Key>
+      <PropertyRef Name="MaterialGroupID" />
+    </Key>
+    <Property Name="MaterialGroupID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Materials" Relationship="DB_GDYCMSModel.fk_MaterialGroup" FromRole="MaterialGroups" ToRole="Materials" />
+  </EntityType>
+  <EntityType Name="Materials">
+    <Key>
+      <PropertyRef Name="MaterialID" />
+    </Key>
+    <Property Name="MaterialID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MaterialGroupID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="HTML" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="FirstCreatorID" Type="Int32" />
+    <Property Name="LastModifierID" Type="Int32" />
+    <Property Name="LastChange" Type="DateTime" Precision="3" />
+    <Property Name="isPublished" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="MaterialGroups" Relationship="DB_GDYCMSModel.fk_MaterialGroup" FromRole="Materials" ToRole="MaterialGroups" />
+    <NavigationProperty Name="UserProfile" Relationship="DB_GDYCMSModel.fk_FirstCreator" FromRole="Materials" ToRole="UserProfile" />
+    <NavigationProperty Name="UserProfile1" Relationship="DB_GDYCMSModel.fk_LastModifier" FromRole="Materials" ToRole="UserProfile" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Materials" Relationship="DB_GDYCMSModel.fk_FirstCreator" FromRole="UserProfile" ToRole="Materials" />
+    <NavigationProperty Name="Materials1" Relationship="DB_GDYCMSModel.fk_LastModifier" FromRole="UserProfile" ToRole="Materials" />
+    <NavigationProperty Name="webpages_Roles" Relationship="DB_GDYCMSModel.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ConfirmationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="IsConfirmed" Type="Boolean" />
+    <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="UserProfile" Relationship="DB_GDYCMSModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
+  </EntityType>
+  <Association Name="fk_MaterialGroup">
+    <End Role="MaterialGroups" Type="DB_GDYCMSModel.MaterialGroups" Multiplicity="1" />
+    <End Role="Materials" Type="DB_GDYCMSModel.Materials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaterialGroups">
+        <PropertyRef Name="MaterialGroupID" />
+      </Principal>
+      <Dependent Role="Materials">
+        <PropertyRef Name="MaterialGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_FirstCreator">
+    <End Role="UserProfile" Type="DB_GDYCMSModel.UserProfile" Multiplicity="0..1" />
+    <End Role="Materials" Type="DB_GDYCMSModel.Materials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Materials">
+        <PropertyRef Name="FirstCreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_LastModifier">
+    <End Role="UserProfile" Type="DB_GDYCMSModel.UserProfile" Multiplicity="0..1" />
+    <End Role="Materials" Type="DB_GDYCMSModel.Materials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Materials">
+        <PropertyRef Name="LastModifierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="webpages_UsersInRoles">
+    <End Role="webpages_Roles" Type="DB_GDYCMSModel.webpages_Roles" Multiplicity="*" />
+    <End Role="UserProfile" Type="DB_GDYCMSModel.UserProfile" Multiplicity="*" />
+  </Association>
+</Schema>
