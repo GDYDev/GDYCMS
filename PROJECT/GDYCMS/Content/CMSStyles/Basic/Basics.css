@@ -1,0 +1,74 @@
+﻿.CMSUpperHeader {
+    border-style: solid;
+    border-width: 1px;
+    height: 100px;
+    background-color: #269abc;
+    overflow-y: auto;
+}
+
+.UpperHeader{
+    border-style: solid;
+    border-width: 1px;
+    height: 100px;
+    background-color: #269abc;
+    overflow-y: auto;
+}
+
+.UpperMenu{
+    border-style: solid;
+    border-width: 1px;
+    height: 50px;
+    background-color: #00BFFF;
+    overflow-y: auto;
+}
+
+
+.LeftMenuUp{
+    border-style: solid;
+    border-width: 1px;
+    height: 300px;
+    background-color: #00BFFF;
+    overflow-y: auto;
+}
+
+.LeftMenuDown{
+    border-style: solid;
+    border-width: 1px;
+    height: 300px;
+    background-color: #00BFFF;
+    overflow-y: auto;
+}
+
+.RightMenuUp{
+    border-style: solid;
+    border-width: 1px;
+    height: 300px;
+    background-color: #00BFFF;
+    overflow-y: auto;
+}
+
+.RightMenuDown{
+    border-style: solid;
+    border-width: 1px;
+    height: 300px;
+    background-color: #00BFFF;
+    overflow-y: auto;
+}
+
+
+
+.CentralContent{
+    border-style: solid;
+    border-width: 1px;
+    height: 600px;
+    background-color: #3B9EBF;
+    overflow-y: auto;
+}
+
+.Footer{
+    border-style: solid;
+    border-width: 1px;
+    height: 75px;
+    background-color: #3B9EBF;
+    overflow-y: auto;
+}

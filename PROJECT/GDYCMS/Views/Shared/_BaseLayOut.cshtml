@@ -1,0 +1,62 @@
+﻿@{
+    Layout = null;
+}
+@model GDYCMS.Models.ViewerModel
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/Content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/CMSStyles/Basic/Basics.css" />
+
+    <meta name="viewport" content="width=device-width, init-scale=1" />
+    <title></title>
+</head>
+
+
+<body>
+    <script src="/Scripts/angular.min.js"/></script>
+    <script src="/Scripts/jquery-2.1.4.min.js"/></script>
+    <script src="/Scripts/bootstrap.min.js"/></script>
+    <script src="/Scripts/bootstrap.min.js"/></script>
+    <div class="container-fluid">
+        <div class="row"> <!-- Upper Logo ROW -->
+            <div class="col-xs-12 col-md-12 UpperHeader">
+                <img  src="~/Content/CMSStyles/Basic/Images/SiteLogo.png"/>
+            </div>
+            <div class="col-xs-12 col-md-12 UpperMenu">
+                @Html.Partial("~/Views/Shared/_UpMenuPartial.cshtml",Model)
+            </div>
+        </div>
+        <div class="row"> <!--CENTER CONTENT -->
+            <div class="col-xs-2 col-md-2"> <!-- LEFT BLOCK -->
+                <div class="row">
+                    <div class="col-xs-12 col-md-12 LeftMenuUp">
+                        @Html.Partial("~/Views/Shared/_LeftMenuUpPartial.cshtml",Model)
+                    </div>
+                    <div class="col-xs-12 col-md-12 LeftMenuDown">
+                        @Html.Partial("~/Views/Shared/_LeftMenuDownPartial.cshtml",Model)
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-8 col-md-8 CentralContent"> <!--Central Content -->
+                @Html.Partial("~/Views/Shared/_CentralContentPartial.cshtml",Model)
+            </div>
+            <div class="col-xs-2 col-md-2"> <!-- Right BLOCK -->
+                <div class="row">
+                    <div class="col-xs-12 col-md-12 RightMenuUp">
+                        @Html.Partial("~/Views/Shared/_RightMenuUpPartial.cshtml",Model)
+                    </div>
+                    <div class="col-xs-12 col-md-12 RightMenuDown">
+                        @Html.Partial("~/Views/Shared/_RightMenuDownPartial.cshtml",Model)
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-12 Footer"> <!-- Right BLOCK -->
+                @Html.Partial("~/Views/Shared/_FooterPartial.cshtml",Model)
+            </div>
+        </div>
+        @RenderBody()
+    </div>
+</body>
+</html>
