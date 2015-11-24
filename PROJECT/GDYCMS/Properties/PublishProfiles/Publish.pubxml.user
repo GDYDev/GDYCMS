@@ -11,10 +11,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/DB_GDYCMS.mdf">
-      <publishTime>11/19/2015 21:57:01</publishTime>
+      <publishTime>11/25/2015 00:05:55</publishTime>
     </File>
     <File Include="App_Data/DB_GDYCMS_log.ldf">
-      <publishTime>11/19/2015 21:57:01</publishTime>
+      <publishTime>11/25/2015 00:05:55</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>11/19/2015 15:54:44</publishTime>
@@ -47,7 +47,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2015 15:58:04</publishTime>
     </File>
     <File Include="bin/GDYCMS.dll">
-      <publishTime>11/19/2015 22:24:07</publishTime>
+      <publishTime>11/20/2015 09:41:06</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>11/19/2015 15:54:38</publishTime>
@@ -146,10 +146,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2015 16:02:02</publishTime>
     </File>
     <File Include="Content/CMSStyles/Basic/Basics.css">
-      <publishTime>11/19/2015 16:02:02</publishTime>
+      <publishTime>11/24/2015 23:39:40</publishTime>
     </File>
     <File Include="Content/CMSStyles/Basic/Images/SiteLogo.png">
-      <publishTime>11/19/2015 19:58:24</publishTime>
+      <publishTime>11/20/2015 10:02:32</publishTime>
     </File>
     <File Include="Content/normalize.css">
       <publishTime>11/19/2015 16:03:10</publishTime>
@@ -322,8 +322,44 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/ui-bootstrap-csp.css">
       <publishTime>11/19/2015 16:00:07</publishTime>
     </File>
+    <File Include="Content/Upload/Pictures/AccountManagement.png">
+      <publishTime>11/20/2015 05:49:17</publishTime>
+    </File>
+    <File Include="Content/Upload/Pictures/AdminPage.png">
+      <publishTime>11/20/2015 05:49:17</publishTime>
+    </File>
+    <File Include="Content/Upload/Pictures/CopyToClipBoard.png">
+      <publishTime>11/20/2015 05:49:17</publishTime>
+    </File>
+    <File Include="Content/Upload/Pictures/EditorExample.png">
+      <publishTime>11/20/2015 05:49:17</publishTime>
+    </File>
+    <File Include="Content/Upload/Pictures/FileManager.png">
+      <publishTime>11/20/2015 05:49:17</publishTime>
+    </File>
+    <File Include="Content/Upload/Pictures/MaterialEditor.png">
+      <publishTime>11/20/2015 05:49:17</publishTime>
+    </File>
+    <File Include="Content/Upload/Pictures/MaterialEditorDown.png">
+      <publishTime>11/20/2015 05:49:17</publishTime>
+    </File>
+    <File Include="Content/Upload/Pictures/PasteFromClipBoard.png">
+      <publishTime>11/20/2015 05:49:17</publishTime>
+    </File>
     <File Include="Content/Upload/Pictures/Picture.png">
-      <publishTime>11/19/2015 22:22:11</publishTime>
+      <publishTime>11/20/2015 04:44:47</publishTime>
+    </File>
+    <File Include="Content/Upload/Pictures/SignIn.png">
+      <publishTime>11/20/2015 05:49:17</publishTime>
+    </File>
+    <File Include="Content/Upload/Pictures/SiteMap.png">
+      <publishTime>11/20/2015 05:49:17</publishTime>
+    </File>
+    <File Include="Content/Upload/Pictures/Smile.png">
+      <publishTime>11/20/2015 05:49:17</publishTime>
+    </File>
+    <File Include="Content/Upload/Pictures/ToLinkBuffer.png">
+      <publishTime>11/20/2015 05:49:17</publishTime>
     </File>
     <File Include="Content/Warnings/AccessClosed.html">
       <publishTime>11/19/2015 16:02:34</publishTime>
@@ -428,13 +464,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2015 19:00:13</publishTime>
     </File>
     <File Include="Scripts/Logic/Admin/FileManager.js">
-      <publishTime>11/19/2015 19:02:47</publishTime>
+      <publishTime>11/20/2015 04:59:18</publishTime>
     </File>
     <File Include="Scripts/Logic/Admin/MaterialEditor.js">
       <publishTime>11/19/2015 16:04:49</publishTime>
     </File>
     <File Include="Scripts/Logic/Admin/MaterialsEditor.js">
-      <publishTime>11/19/2015 19:05:40</publishTime>
+      <publishTime>11/25/2015 00:01:37</publishTime>
     </File>
     <File Include="Scripts/Logic/Admin/UserChangePassword.js">
       <publishTime>11/19/2015 16:04:49</publishTime>
@@ -707,7 +743,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2015 16:06:52</publishTime>
     </File>
     <File Include="Views/Admin/LinkBufferPartial.cshtml">
-      <publishTime>11/19/2015 16:06:52</publishTime>
+      <publishTime>11/20/2015 04:44:47</publishTime>
     </File>
     <File Include="Views/Admin/MaterialEditor.cshtml">
       <publishTime>11/19/2015 16:06:52</publishTime>
@@ -716,7 +752,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2015 16:06:52</publishTime>
     </File>
     <File Include="Views/Admin/MaterialsEditorPartial.cshtml">
-      <publishTime>11/19/2015 16:06:52</publishTime>
+      <publishTime>11/20/2015 04:44:47</publishTime>
     </File>
     <File Include="Views/Admin/Test.cshtml">
       <publishTime>11/19/2015 16:06:52</publishTime>
@@ -791,7 +827,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2015 16:06:52</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/19/2015 22:24:07</publishTime>
+      <publishTime>11/25/2015 00:06:34</publishTime>
     </File>
   </ItemGroup>
 </Project>

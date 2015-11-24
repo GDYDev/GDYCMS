@@ -147,7 +147,7 @@ angular.module('GDYApp').controller('GDYController', function ($scope, $sce, $lo
         $scope.CurrentEditor.HTML = Returned.HTML;
         $scope.CurrentEditor.SelectedMaterialID = Returned.SelectedMaterialID;
         $scope.CurrentEditor.isPublished = Returned.isPublished;
-        $scope.CurrentEditor.LastChange = Returned.LastChange;
+        $scope.CurrentEditor.LastChange = new Date(parseInt(Returned.LastChange.substr(6)));
         $scope.CurrentEditor.LastModifier = Returned.LastModifier;
         $scope.CurrentEditor.FirstCreator = Returned.FirstCreator
     }
@@ -314,7 +314,6 @@ angular.module('GDYApp').controller('GDYController', function ($scope, $sce, $lo
     }
 	
     $scope.UpdateMaterial = function () { // Save material changes
-        alert('Update process');
 		if ($scope.CurrentEditor.SelectedMaterial!=''){ 
 			$scope.CurrentEditor.cmd = 'UpdateMaterial';
             var Returned = ProcessAJAXRequest("/Admin/MaterialsEditorJSON", $scope.CurrentEditor);	
