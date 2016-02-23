@@ -12,6 +12,7 @@ using WebMatrix.WebData;
 using GDYCMS.Filters;
 using GDYCMS.Models;
 using System.IO;
+using System.Globalization;
 
 
 namespace GDYCMS.Models.Wrappers
@@ -22,6 +23,36 @@ namespace GDYCMS.Models.Wrappers
     /// </summary>
     public class AdminControllerType:CMSController
     {
+        /// <summary>
+        /// Selects visitors at date range
+        /// </summary>
+        /// <param name="From">DateTime from</param>
+        /// <param name="To">DateTime to</param>
+        /// <returns></returns>
+        /// 
+
+        public void ClearStatistics() {
+            DBBase.Context.Database.ExecuteSqlCommand("TRUNCATE TABLE [Statistics]");
+        }
+
+        public StatisticsModel CurrentStatistics(DateTime From, DateTime To)
+        {
+            StatisticsModel ret = new StatisticsModel();
+            var st = DBBase.Context.Statistics.Where(q => q.TimeStamp >= From).Where(s => s.TimeStamp <= To).OrderBy(z=>z.TimeStamp);
+            foreach (var item in st) {
+                DateTime dt = (DateTime)item.TimeStamp;
+                var datestr=dt.ToString("yyyy-MM-dd");
+                ret.Visitors.Add(new StatisticsModel.Visitor { Date = datestr, IP = item.IP, BrowserInfo = item.UserAgent });
+            }
+            ret.From = From; // Restore from date for javascript(that work with returned back model)
+            ret.To = To;// Restore from date for javascript(that work with returned back model)
+            return ret;
+        }
+
+        public StatisticsModel CurrentStatistics() {
+            return new StatisticsModel();
+        }
+
         /// <summary>
         /// This internal class contain all functions for working with users
         /// </summary>
@@ -44,11 +75,15 @@ namespace GDYCMS.Models.Wrappers
                     return ret;
                 }
             }
+
+
+
             /// <summary>
             /// Register new user, use WebSecurity
             /// </summary>
             /// <param name="InputModel">-users model(universal model for working with users)</param>
             /// <returns>users model</returns>
+            /// 
             public UsrsModel AddNewUser(UsrsModel InputModel)
             {
                 if (InputModel.UserName == null)

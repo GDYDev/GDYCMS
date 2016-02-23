@@ -24,6 +24,12 @@ namespace GDYCMS.Models.Wrappers
         /// <para>Contain access limited page. When material is not published, this page would be loaded to central page content(for non-registered users only)</para>
         /// <para></para>
         public class CMSConfigurationsClass{
+
+            /// <summary>
+            /// Statistics info
+            /// </summary>
+            public StatisticsInfo StatInfo { get; set; } 
+
             /// <summary>
             /// Link to the controller, that inherit this class and has real http context.
             /// </summary>
@@ -46,12 +52,30 @@ namespace GDYCMS.Models.Wrappers
                     return System.IO.File.ReadAllText(BaseController.Server.MapPath("~/Content/Warnings/NotFound.html"));
                 }
             }
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            /// <param name="ControllerBase">receive example of controller, that has inherited this class</param>
-            public CMSConfigurationsClass(Controller ControllerBase) {
+
+            public DBBaseFunctions DBBaseSample;
+            public CMSConfigurationsClass(Controller ControllerBase,DBBaseFunctions DBBase) {
                 this.BaseController = ControllerBase;
+                this.StatInfo = new StatisticsInfo(); // Create statistics info class
+                this.DBBaseSample=DBBase;
+            }
+
+            public void CountThisUserInStatistics() {
+                if (BaseController.Session["StatInfo"] == null)                
+                {
+                    StatInfo.UserIP = BaseController.HttpContext.Request.UserHostAddress;
+                    StatInfo.UserAgent = BaseController.HttpContext.Request.UserAgent;
+                    BaseController.Session["StatInfo"] = StatInfo; // Create first Instance
+                    // ADD statistics register operations
+
+                    Statistics creation = new Statistics();
+                    creation.IP = StatInfo.UserIP;
+                    creation.UserAgent = StatInfo.UserAgent;
+                    creation.TimeStamp = System.DateTime.Now;
+                    DBBaseSample.Context.Statistics.Add(creation);
+                    //DBBaseSample.Context.Entry(creation).State = System.Data.Entity.EntityState.Modified;
+                    DBBaseSample.Context.SaveChanges();
+                }
             }
 
             /// <summary>
@@ -282,7 +306,8 @@ namespace GDYCMS.Models.Wrappers
         /// </summary>
         public CMSController() {
             DBBase = new DBBaseFunctions();
-            _cmsConfiguration = new CMSConfigurationsClass(this);
+            _cmsConfiguration = new CMSConfigurationsClass(this,DBBase);
+
         }
     }
 }

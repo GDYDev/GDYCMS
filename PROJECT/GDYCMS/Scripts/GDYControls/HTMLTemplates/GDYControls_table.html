@@ -1,0 +1,11 @@
+
+		<table class="table table-bordered" style="width:100%;height:100px;overflow-y:scroll;">
+			<tr>
+				<td ng-repeat="header in tableHeader">{{header}}</td>
+			</tr>
+			<tr ng-repeat="row in tabledata" ng-class="{GDYTable_SelectedItem:$index==selectedIndex}" ng-click="SelectItem($index)">
+				<td ng-repeat="column in row">{{column}}</td>
+			</tr>
+		</table>
+
+

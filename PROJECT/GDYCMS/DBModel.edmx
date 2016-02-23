@@ -9,6 +9,7 @@
           <EntitySet Name="CentralMaterials" EntityType="DB_GDYCMSModel.Store.CentralMaterials" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MaterialGroups" EntityType="DB_GDYCMSModel.Store.MaterialGroups" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Materials" EntityType="DB_GDYCMSModel.Store.Materials" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Statistics" EntityType="DB_GDYCMSModel.Store.Statistics" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserProfile" EntityType="DB_GDYCMSModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="webpages_Membership" EntityType="DB_GDYCMSModel.Store.webpages_Membership" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="webpages_OAuthMembership" EntityType="DB_GDYCMSModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
@@ -62,6 +63,15 @@
           <Property Name="LastModifierID" Type="int" />
           <Property Name="LastChange" Type="datetime" />
           <Property Name="isPublished" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statistics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TimeStamp" Type="datetime" />
+          <Property Name="UserAgent" Type="varchar(max)" />
+          <Property Name="IP" Type="nvarchar" MaxLength="24" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -179,6 +189,7 @@
           <EntitySet Name="CentralMaterials" EntityType="DB_GDYCMSModel.CentralMaterials" />
           <EntitySet Name="MaterialGroups" EntityType="DB_GDYCMSModel.MaterialGroups" />
           <EntitySet Name="Materials" EntityType="DB_GDYCMSModel.Materials" />
+          <EntitySet Name="Statistics" EntityType="DB_GDYCMSModel.Statistics" />
           <EntitySet Name="UserProfile" EntityType="DB_GDYCMSModel.UserProfile" />
           <EntitySet Name="webpages_Membership" EntityType="DB_GDYCMSModel.webpages_Membership" />
           <EntitySet Name="webpages_OAuthMembership" EntityType="DB_GDYCMSModel.webpages_OAuthMembership" />
@@ -231,6 +242,15 @@
           <NavigationProperty Name="MaterialGroups" Relationship="DB_GDYCMSModel.fk_MaterialGroup" FromRole="Materials" ToRole="MaterialGroups" />
           <NavigationProperty Name="UserProfile" Relationship="DB_GDYCMSModel.fk_FirstCreator" FromRole="Materials" ToRole="UserProfile" />
           <NavigationProperty Name="UserProfile1" Relationship="DB_GDYCMSModel.fk_LastModifier" FromRole="Materials" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Statistics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+          <Property Name="UserAgent" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="IP" Type="String" MaxLength="24" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -349,6 +369,16 @@
                 <ScalarProperty Name="LastModifierID" ColumnName="LastModifierID" />
                 <ScalarProperty Name="LastChange" ColumnName="LastChange" />
                 <ScalarProperty Name="isPublished" ColumnName="isPublished" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statistics">
+            <EntityTypeMapping TypeName="DB_GDYCMSModel.Statistics">
+              <MappingFragment StoreEntitySet="Statistics">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
