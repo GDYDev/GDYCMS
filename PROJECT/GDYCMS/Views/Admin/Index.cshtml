@@ -2,13 +2,86 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+@model GDYCMS.Models.StatisticsModel
+<script src="/Scripts/GDYControls/GDYControls.js"></script>
+<script src="/Scripts/Logic/Admin/Statistics.js"></script>
+<link rel="stylesheet" type="text/css" href="/Scripts/GDYControls/CSS/GDYControlsStyles.css" />
+<link rel="stylesheet" type="text/css" href="/Content/CMSStyles/AdminStyles/Statistics.css" />
+<div ng-app="GDYApp" ng-controller="GDYController">
+    <!--
+        <gdy-graph></gdy-graph>
+    -->
+           
+@using (Html.BeginForm("Index", "Admin", FormMethod.Post, new { id="QueryStatForm" })){
+        <script>
+            var Visitors=@Html.Raw(Json.Encode(Model.Visitors));
+            var DateFrom=@Html.Raw(Json.Encode(Model.From.ToString("yyyy-MM-dd")));
+            var DateTo=@Html.Raw(Json.Encode(Model.To.ToString("yyyy-MM-dd")));
+        </script>
+        @Html.HiddenFor(p=>p.Visitors,new {id="Visitors"});
+        @Html.HiddenFor(q => q.Action, new { id = "ActionName" });
 
-<pre>
-<h2>Welcome to administrator panel</h2>
+    <div class="row">        
+        <div class="col-md-12 col-xs-12"></div>
+        <div class="col-md-5 col-xs-5 StatisticsTable">
+            <div class="row">
+                <div class="col-md-12 col-xs-12 StatisticsHeader"><span>STATISTICS</span></div>
+                <div class="row">
+                    <div class="col-md-3 col-xs-3"></div>
+                    <div class="col-md-6 col-xs-6">
+                        <div class="row">
+                            <div class="col-md-12 col-xs-12">FROM</div><div class="col-md-12 col-xs-12"><p><input type="date" name="From" id="From" ng-model="DateFrom" class="inputFromTo" /></p></div>
+                            <div class="col-md-12 col-xs-12">TO</div><div class="col-md-12 col-xs-12"><p><input type="date" name="To" id="To" ng-model="DateTo" class="inputFromTo" /></p></div>            
+                            <div class="col-md-12 col-xs-12"><input type="submit" value="QUERY" onclick="return false;" ng-click="Submit();" class="btn btn-primary inputFromTo" /></div>
+                        </div>
+                    </div>                    
+                    <div class="col-md-3 col-xs-2"></div>
+                </div>
+                <div class="col-md-12 col-xs-12" style="height:400px;overflow:scroll;"><gdy-table paramstruct="tabledata"></gdy-table></div>
+            </div>
+        </div>
+        <div class="col-md-7 col-xs-7" style="background-color:white; height:530px;"><gdy-statgraph paramstruct="XYdata"></gdy-statgraph></div>
+        <div class="col-md-12 col-xs-12">
+            <input type="submit" value="CLEAR STATISTICS" onclick="return false;" ng-click="ClearStatisticsClick();" class="btn btn-primary inputFromTo" style="float:right;"/>
+        </div>
+    </div>
 
-<h3>Visitors per day: not avaible(wait next release)</h3>
+}
 
-<h3>Visitors per previous month: not avaible(wait next release)</h3>
+<div id="ClearStatisticsDiallog" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Warning</h4>
+      </div>
+      <div class="modal-body">
+        Do you want clear statistics ?
+      </div>                
+      <div class="modal-footer">
+          <button type="button" class="btn btn-danger LeftModalButton" data-dismiss="modal" ng-click="ProcessClearStatistics();" >CLEAR</button>
+          <button type="button" class="btn btn-primary RightModalButton" data-dismiss="modal" >CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h3>Visitors per this month: not avaible(wait next release)</h3>
-</pre>
+
+
+<div id="FieldError" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Error</h4>
+      </div>
+      <div class="modal-body">
+        {{ErrorMessage}}
+      </div>                
+      <div class="modal-footer">
+          <button type="button" class="btn btn-primary RightModalButton" data-dismiss="modal" >CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

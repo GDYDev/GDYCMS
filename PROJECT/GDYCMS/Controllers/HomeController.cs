@@ -72,6 +72,8 @@ namespace GDYCMS.Controllers
     
         public ActionResult Index(int? id)
         {
+            this.BaseThings.CountThisUserInStatistics();
+
             m = new ViewerModel();
             FoundedMaterialQueryResult CentralContent = this.GetHtmlByID(new FoundedMaterialQueryResult { id = id, IsAuthenticated = User.Identity.IsAuthenticated });            
             if (CentralContent.Result == FoundedMaterialQueryResult.QueryResults.NotFound)

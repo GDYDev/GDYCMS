@@ -24,9 +24,26 @@ namespace GDYCMS.Controllers
         /// </summary>
         /// <returns>View:Index.cshtml</returns>
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(StatisticsModel model)
         {
-            return View();
+            if (model.Action == "ClearStatistics")
+            {
+                this.ClearStatistics();
+                model.Action = "";
+                return View(CurrentStatistics());
+            }
+            else
+            {
+                if (model.From != null)
+                {
+                    StatisticsModel m = CurrentStatistics(model.From, model.To);
+                    return View(m);
+                }
+                else
+                {
+                    return View(CurrentStatistics());
+                }
+            }
         }
         /// <summary>
         /// Material editor action method

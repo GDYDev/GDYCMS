@@ -28,6 +28,7 @@ namespace GDYCMS
         public DbSet<CentralMaterials> CentralMaterials { get; set; }
         public DbSet<MaterialGroups> MaterialGroups { get; set; }
         public DbSet<Materials> Materials { get; set; }
+        public DbSet<Statistics> Statistics { get; set; }
         public DbSet<UserProfile> UserProfile { get; set; }
         public DbSet<webpages_Membership> webpages_Membership { get; set; }
         public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }

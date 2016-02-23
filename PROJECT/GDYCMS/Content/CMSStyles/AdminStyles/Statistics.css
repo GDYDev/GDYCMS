@@ -1,0 +1,12 @@
+﻿.StatisticsTable {
+    background-color:#2DBBEB;
+}
+.StatisticsHeader {
+    background: linear-gradient(to top, #2DBBEB, #1ae0e6);
+}
+.StatisticsHeader span {
+    margin-left:50%;
+}
+.inputFromTo {
+    width:100%;
+}
